@@ -5,17 +5,28 @@
         Translation in Mexican Literary Periodicals
       </title>
       <style>
+      body{
+        margin:0;
+        background: url("./images/revistas.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment:fixed;
+      }
         header {
           text-align: center;
-          background: url("./images/revistas.jpg");
-          background-size: cover;
           color: white;
           font-size: 24px;
+        }
+        .nav{
+          text-align: center;
+          width: 100%;
         }
         #index {
           background: rgba(10, 10, 10, 0.4);
           padding: 10px;
           margin:0;
+          width:100%;
+          overflow: hidden;
         }
         #index li {
           display:inline;
@@ -25,7 +36,18 @@
         }
         #index a {
           color: white;
+          text-decoration: none;
         }
+        #index a:hover {
+          color: orange;
+        }
+        <!-- just to change the color of the section we're on supposing the links link to the same page-->
+
+        #index a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
         img {
           margin: 40px 0px 0px 0px;
           border-radius: 100px;
@@ -36,10 +58,12 @@
           margin:0;
         }
         .home {
-          background-color: rgba(244, 232, 104, 0.7);
-          height: 200px;
+          background-color: #fdb735;
+          height: 800px;
           margin:0;
+          padding:0;
         }
+
         @media (max-width: 500px) {
           h1 {
             font-size: 20px;
@@ -52,22 +76,48 @@
             padding: 0;
           }
         }
+        .sticky {
+          position: fixed;
+          top: 0;
+          width: 100%;
+        }
       </style>
+      <script src="./js/jquery-3.3.1.min.js"></script>
+      <script>
+      $(document).ready(function(){ $(window).scroll(function(){
+if($(window).scrollTop() > 300){ $(".nav").css({"background-color":"#fd5012"});
+} else{ $(".nav").css({"background-color":rgba(10, 10, 10, 0.4)}); } }) })
+</script>
+<script>
+$(document).ready(function(){ $(window).scroll(function(){
+if($(window).scrollTop() > 300){ $(".nav").css({"position":fixed}); } else{
+$(".nav").css({"position":relative}); } }) })
+</script>
+
     </head>
     <body>
         <header>
           <img src="./images/buho.png" alt="An image of an owl as editorial logo">
           <h1>Translation in Mexican Literary Magazines</h1>
+            </header>
+          <div id="navbar" class="nav">
           <ul id='index'>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Timeline</a></li>
-            <li><a href="#">Magazines</a></li>
-            <li><a href="#">Translators</a></li>
-            <li><a href="#">Featured Translations</a></li>
+            <li><a href="#", style="text-decoration:none">About</a></li>
+            <li><a href="#", style="text-decoration:none">Timeline</a></li>
+            <li><a href="#", style="text-decoration:none">Magazines</a></li>
+            <li><a href="#", style="text-decoration:none">Translators</a></li>
+            <li><a href="#", style="text-decoration:none">Featured Translations</a></li>
           </ul>
-        </header>
+        </div>
+
         <div class="home">
           <h2>The timeline will definitely go here</h2>
         </div>
+        <script>
+        window.onscroll = function() {myFunction()}; var navbar =
+document.getElementById("navbar"); var sticky = navbar.offsetTop; function
+myFunction() { if (window.pageYOffset >= sticky) {
+navbar.classList.add("sticky") } else { navbar.classList.remove("sticky"); } }
+</script>
     </body>
   </html>
